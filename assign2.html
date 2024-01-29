@@ -4,6 +4,8 @@
 <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/styles.css">
+<script src = "https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 
 
 </head>    
@@ -24,21 +26,40 @@
         </form>    
     </div>
     <figure id="imgManipulated">
-        <img src="images/medium/painting1.jpg" > 
+        <img src="images/medium/painting1.jpg" style = "width: 424px; height: 640px;" > 
         <figcaption>
             <em>Still Life with Flowers in a Glass Vase</em> <br>
             Jan Davidsz. de Heem, 1650 - 1683
         </figcaption>
     </figure>   
     <div id="thumbBox">
-        <div><img src="images/small/painting1.jpg"  alt="Still Life with Flowers in a Glass Vase" title="Jan Davidsz. de Heem, 1650 - 1683"/></div>
-        <div><img src="images/small/painting2.jpg"  alt="Portrait of Alida Christina Assink" title="Jan Adam Kruseman, 1833"/></div>
-        <div><img src="images/small/painting3.jpg"  alt="Self-portrait" title="Vincent van Gogh, 1887"/></div>
-        <div><img src="images/small/painting4.jpg"  alt="William II, Prince of Orange, and his Bride, Mary Stuart" title="Anthony van Dyck, 1641"/></div>
-        <div><img src="images/small/painting5.jpg"  alt="Milkmaid" title="Johannes Vermeer, c. 1660"/></div>
+        <div class="NicePainting"><img src="images/small/painting1.jpg"  alt="Still Life with Flowers in a Glass Vase" title="Jan Davidsz. de Heem, 1650 - 1683"/></div>
+        <div class="NicePainting"><img src="images/small/painting2.jpg"  alt="Portrait of Alida Christina Assink" title="Jan Adam Kruseman, 1833"/></div>
+        <div class="NicePainting"><img src="images/small/painting3.jpg"  alt="Self-portrait" title="Vincent van Gogh, 1887"/></div>
+        <div class="NicePainting"><img src="images/small/painting4.jpg"  alt="William II, Prince of Orange, and his Bride, Mary Stuart" title="Anthony van Dyck, 1641"/></div>
+        <div class="NicePainting"><img src="images/small/painting5.jpg"  alt="Milkmaid" title="Johannes Vermeer, c. 1660"/></div>
     </div>
+
+
 </main>
 <script>
+    
+      $(".NicePainting").on("click", function () {
+        var newImageSrc = $(this).find('img').attr('src');
+        newImageSrc = newImageSrc.replace(/small/g, 'medium');
+        $("#imgManipulated img").attr('src', newImageSrc);
+
+        var altDes = $(this).find('img').attr('alt');
+        var newImageTit = $(this).find('img').attr('title');
+
+        $("#imgManipulated figcaption").html('<em>' + altDes + '</em><br>' + newImageTit);
+
+      });
+
+      $("#sliderOpacity").on("click", function() {
+        var newOpacity = $(this).find('input').attr('value');
+        $("#sliderBox span").html(newOpacity);
+      });
 
 </script>    
 </body>   
