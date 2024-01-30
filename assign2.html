@@ -26,7 +26,7 @@
         </form>    
     </div>
     <figure id="imgManipulated">
-        <img src="images/medium/painting1.jpg" style = "width: 424px; height: 640px;" > 
+        <img src="images/medium/painting1.jpg" style = "width: 424px; height: 640px;" id = "filteredImage" > 
         <figcaption>
             <em>Still Life with Flowers in a Glass Vase</em> <br>
             Jan Davidsz. de Heem, 1650 - 1683
@@ -56,10 +56,66 @@
 
       });
 
-      $("#sliderOpacity").on("click", function() {
-        var newOpacity = $(this).find('input').attr('value');
-        $("#sliderBox span").html(newOpacity);
-      });
+      $("#sliderOpacity").on("input", function() {
+        var newOpacity = $(this).val();
+        $("#numOpacity").text(newOpacity);
+
+        $('#filteredImage').css('filter', 'opacity(' + newOpacity + '%)');
+    });
+        
+    $("#sliderSaturation").on("input", function() {
+        var newSat = $(this).val();
+        $("#numSaturation").text(newSat);
+
+        $('#filteredImage').css('filter', 'saturate(' + newSat + '%)');
+    });
+
+        $("#sliderBrightness").on("input", function() {
+        var newBrightness = $(this).val();
+        $("#numBrightness").text(newBrightness);
+        $('#filteredImage').css('filter', 'brightness(' + newBrightness + '%)');
+
+        });
+
+        $("#sliderHue").on("input", function() {
+        var newHue = $(this).val();
+        $("#numHue").text(newHue);
+        $('#filteredImage').css('filter', 'hue-rotate(' + newHue + 'deg)');
+        });
+
+        $("#sliderGray").on("input", function() {
+        var newGray = $(this).val();
+        $("#numGray").text(newGray);
+        $('#filteredImage').css('filter', 'grayscale(' + newGray + '%)');
+        });
+
+        $("#sliderBlur").on("input", function() {
+        var newBlur = $(this).val();
+        $("#numBlur").text(newBlur);
+        $('#filteredImage').css('filter', 'blur(' + newBlur + 'px)');
+        });
+
+        /*
+        function updateFilter() {
+            var newOpacity = $("#sliderOpacity").val();
+            var newSat = $("sliderSaturation").val();
+            var newBrightness = $("#newBrightness").val();
+            var newHue = $("sliderHue").val();
+            var newGay = $("#sliderGray").val();
+            var newBlur = $(#sliderBlur).val();
+            var newBlur = $(#slid)
+
+
+
+        }
+        
+        */
+
+
+
+
+
+
 
 </script>    
 </body>   
